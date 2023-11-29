@@ -6,3 +6,13 @@ You can use the default [rule base](https://github.com/pmd/pmd/blob/master/pmd-j
 
 ## Answer
 
+Projet utilisé: https://gitlab.inria.fr/gazelle/applications/mixed/gazelle-tm
+
+Vrai positif : gazelle-tm\gazelle-tm-ejb\src\main\java\net\ihe\gazelle\dao\GazelleDAO.java 	16 	Unused import 'net.ihe.gazelle.tm.systems.model.*'
+
+L'erreur retournée nous signale qu'un import n'a pas été utilisé. Celui de vrait alors être supprimé.
+
+Faux positif :
+gazelle-tm\gazelle-tm-ejb\src\main\java\net\ihe\gazelle\documents\converter\DocumentToXmlConverter.java 	61 	Useless parentheses.
+
+L'erreur nous signale qu'une parenthèse est manquante. Cependant, elle n'est pas présente à cause d'une préférence de style ce qui ne constitue pas uneréelle erreur.
