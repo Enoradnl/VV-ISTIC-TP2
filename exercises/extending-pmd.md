@@ -23,3 +23,37 @@ Use your rule with different projects and describe you findings below. See the [
 
 ## Answer
 
+**Règle à ajouter dans le ruleset :**
+
+```
+<rule name="AvoidDeeplyNestedIfStatements"
+      language="java"
+      message="Avoid using three or more nested 'if' statements to improve code readability."
+      class="net.sourceforge.pmd.lang.rule.XPathRule">
+    <description>
+        This rule detects the use of three or more nested 'if' statements in Java programs.
+    </description>
+    <priority>3</priority>
+    <properties>
+        <property name="xpath">
+            <value>
+                <![CDATA[
+                    //IfStatement[.//IfStatement[.//IfStatement]]
+                ]]>
+            </value>
+        </property>
+    </properties>
+</rule>
+```
+
+**Ici une erreur est donc détectée :**
+
+```
+if (docId != null) {
+            final EntityManager em = EntityManagerService.provideEntityManager();
+            final Document document = em.find(Document.class, Integer.parseInt(docId));
+            if (document != null) {
+                if (selectedDocument == null) {
+                    selectedDocument = document;
+                }
+```
